@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous"/>
+        <title>TO-DO application</title>
+    </h:head>
+    <h:body>
+        <div class="container text-center">
+            <div><h1>Category Form Create</h1></div>
+
+            <h:form style="max-width: 100%; margin: 0 auto;">
+                <div class="form-group">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <div class="m-3">
+                    <p:panel header="Student Details">
+                        <div class="form-group row">
+                            <h:outputLabel styleClass="col-form-label col-sm-4" for="name">Name:</h:outputLabel>
+                            <div class="col-sm-4">
+                                <h:inputText id="name" value="#{myBean.student.name}">
+                                </h:inputText>
+                            </div>
+                            <h:message for="name" style="color: red"/>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <h:outputLabel styleClass="col-form-label col-sm-4" for="age" value="Age: "/>
+                            <div class="col-sm-4">
+                                <p:inputText id="age" value="#{myBean.student.age}"/>
+                            </div>
+                            <h:message for="age" style="color: red"/>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputLabel styleClass="col-form-label col-sm-4" for="address" value="Address: "/>
+                            <div class="col-sm-4">
+                                <p:inputText id="address" value="#{myBean.student.address}"/>
+                            </div>
+                            <h:message for="address" style="color: red"/>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputLabel styleClass="col-form-label col-sm-4" value="Gender: "/>
+                            <h:selectOneRadio styleClass="col-form-label col-sm-4" value="#{myBean.student.gender}">
+                                <f:selectItem itemValue="Male" itemLabel="Male"/>
+                                <f:selectItem itemValue="Female" itemLabel="Female"/>
+                            </h:selectOneRadio>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputLabel styleClass="col-form-label col-sm-4" value="Skills: "/>
+                            <h:selectManyListbox styleClass="col-form-label col-sm-4" value="#{myBean.student.skills}">
+                                <f:selectItem itemValue="Java" itemLabel="Java"/>
+                                <f:selectItem itemValue="SQL" itemLabel="SQL"/>
+                                <f:selectItem itemValue="AWS" itemLabel="AWS"/>
+                                <f:selectItem itemValue="C#" itemLabel="C#"/>
+                                <f:selectItem itemValue="Python" itemLabel="Python"/>
+                            </h:selectManyListbox>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputLabel styleClass="col-form-label col-sm-4" value="  Major: "/>
+                            <h:selectOneMenu styleClass="col-form-label col-sm-4" value="#{myBean.student.major}">
+                                <f:selectItem itemValue="Dev" itemLabel="Dev"/>
+                                <f:selectItem itemValue="QA" itemLabel="QA"/>
+                                <f:selectItem itemValue="Tester" itemLabel="Tester"/>
+                                <f:selectItem itemValue="BA" itemLabel="BA"/>
+                            </h:selectOneMenu>
+                            <br/>
+                        </div>
+
+                        <div class="form-group row">
+                            <p:outputLabel styleClass="col-form-label col-sm-4" for="startDate" value="Start Date:"/>
+                            <p:calendar id="startDate" value="#{bean.startDate}" showOn="button"/>
+                        </div>
+
+                        <div class="form-group row">
+                            <p:outputLabel styleClass="col-form-label col-sm-4" for="endDate" value="End Date:"/>
+                            <p:calendar id="endDate" value="#{bean.startDate}" showOn="button"/>
+                        </div>
+
+                        <h:commandButton style="margin-right: 20px" value="Back" action="hello" class="btn btn-primary"/>
+                        <h:commandButton value="Save" action="#{myBean.saveStudent}" class="btn btn-primary"/>
+
+                    </p:panel>
+                </div>
+
+
+            </h:form>
+
+        </div>
+    </h:body>
+</html>
