@@ -80,13 +80,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <p:outputLabel styleClass="col-form-label col-sm-4" for="startDate" value="Start Date:"/>
-                            <p:calendar id="startDate" value="#{bean.startDate}" showOn="button"/>
+                            <p:outputLabel styleClass="col-form-label col-sm-4" for="fromDate" value="Start Date:"/>
+                            <p:calendar id="fromDate" value="#{myBean.student.fromDate}" showOn="button"/>
                         </div>
 
                         <div class="form-group row">
-                            <p:outputLabel styleClass="col-form-label col-sm-4" for="endDate" value="End Date:"/>
-                            <p:calendar id="endDate" value="#{bean.startDate}" showOn="button"/>
+                            <p:outputLabel styleClass="col-form-label col-sm-4" for="toDate" value="End Date:"/>
+                            <p:calendar id="toDate" value="#{myBean.student.toDate}" showOn="button"/>
                         </div>
 
                         <h:commandButton style="margin-right: 20px" value="Back" action="hello" class="btn btn-primary"/>
