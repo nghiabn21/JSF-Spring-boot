@@ -4,21 +4,211 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous"/>
-    <!--    <h:outputStylesheet name="/css/bootstrap.min.css"/>-->
-    <title>TO-DO application</title>
-</h:head>
+<f:view>
+    <h:head>
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous"/>
+        <!--    <h:outputStylesheet name="/css/bootstrap.min.css"/>-->
+        <title>Application</title>
+        <style>
+            .header {
+                background-color: #007bff;
+                color: white;
+                padding: 10px;
+                text-align: center;
+            }
 
-<h:body>
-    <div class="container text-center">
-        <div><h1>Category Form Create</h1></div>
-    </div>
+            .nowrap {
+                white-space: nowrap;
+            }
+
+            .radio-group {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                align-items: center;
+            }
+
+            .radio-option {
+                margin-bottom: 10px;
+            }
+
+            .input-container {
+                margin-bottom: 10px;
+            }
+
+            .ui-panelgrid .ui-panelgrid-cell {
+                border-style: none;
+            }
+
+            .ui-radiobutton-icon {
+                margin-top: -1px;
+                margin-left: 0px;
+            }
+
+            .custom-tabview {
+                border: none; /* Bỏ khung viền */
+                margin-bottom: 20px; /* Khoảng cách dưới */
+            }
+
+            .custom-tabview .ui-tabs-nav {
+                background-color: #ffffff; /* Màu nền của tab */
+                /*border: none; !* Bỏ khung viền của tab *!*/
+                margin-bottom: 0px; /* Không có khoảng cách dưới */
+                /*padding: 0px; !* Bỏ padding *!*/
+                border-bottom: 1px solid #007bff; /* border viền dưới */
+            }
+
+            .custom-tabview .ui-tabs-nav li {
+                border: none; /* Bỏ khung viền các tab */
+                background-color: transparent; /* Màu nền trong suốt */
+                margin: 0; /* Bỏ margin */
+                padding: 0; /* Bỏ padding */
+                position: relative; /* Để có thể xử lý hover */
+                cursor: pointer; /* Con trỏ chuột khi di chuột vào */
+            }
+
+            .custom-tabview .ui-tabs-nav li:hover::after {
+                content: ''; /* Nội dung thêm sau khi hover */
+                position: absolute; /* Vị trí tuyệt đối */
+                bottom: -2px; /* Khoảng cách đáy */
+                left: 0; /* Vị trí bắt đầu */
+                width: 100%; /* Chiều rộng */
+                height: 2px; /* Chiều cao */
+                /*background-color: #007bff; !* Màu nền *!*/
+                border-bottom: 3px solid darkred;
+            }
+
+            .custom-tabview .ui-tabs-nav li.ui-state-active {
+                /*background-color: #ffffff; !* Màu nền của tab đang active *!*/
+                /*border-bottom: 5px solid darkred; !* Viền dưới của tab đang active *!*/
+            }
+
+            .custom-tabview .ui-tabs-panel {
+                /*border: none; !* Bỏ khung viền của nội dung tab *!*/
+                margin-top: 20px; /* Điều chỉnh khoảng cách giữa tab và nội dung */
+                padding: 0px; /* Đặt padding cho nội dung tab */
+            }
+
+            .ui-tabs.ui-tabs-top > .ui-tabs-nav li {
+                top: 0;
+            }
+
+            .ui-tabs.ui-tabs-top .ui-tabs-nav li.ui-tabs-selected {
+                border-bottom: 2px solid brown; /* chân nền của tab dc chọn */
+                border-top: none;
+                border-left: none;
+                border-right: none;
+            }
+
+            .ui-tabs.ui-tabs-top > .ui-tabs-nav {
+                padding: 0;
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <div style="text-align: center"><h1>Application</h1></div>
+        <div class="Container100 Pad5">
+            <h:form style="max-width: 80%;margin-left: 120px">
+
+                <!--                <p:tabView styleClass="custom-tabview">-->
+                <!--                    <p:tab title="Tab 1">&lt;!&ndash; Nội dung của tab 1 &ndash;&gt;-->
+                <!--                        <h:outputText value="This is content of Tab 1."/>-->
+                <!--                    </p:tab>-->
+                <!--                    <p:tab title="Tab 2">&lt;!&ndash; Nội dung của tab 2 &ndash;&gt;-->
+                <!--                        <h:outputText value="This is content of Tab 2."/>-->
+                <!--                    </p:tab>-->
+                <!--                    <p:tab title="Tab 3">&lt;!&ndash; Nội dung của tab 3 &ndash;&gt;-->
+                <!--                        <h:outputText value="This is content of Tab 3."/>-->
+                <!--                    </p:tab>-->
+                <!--                </p:tabView>-->
+
+                <!--                <p:panelGrid style="border:0; background-color: transparent" styleClass="Wid100" id="pnlSearch">-->
+                <!--                    <p:row styleClass="Wid100 Pad10">-->
+                <!--                        <p:column colspan="6" style="font-weight: bold">-->
+                <!--                            Search for employee-->
+                <!--                        </p:column>-->
+                <!--                    </p:row>-->
+                <p:column style="width:10%" styleClass="nowrap">
+                    <h:outputLabel style="margin-right: 20px" for="name">Name:</h:outputLabel>
+                </p:column>
+                <p:column style="width:25%">
+                    <p:inputText id="name" value="#{myBean.student.name}"
+                                 validatorMessage="User name is required">
+                        <!--                                <f:validateRequired/>-->
+                    </p:inputText>
+                    <div>
+                        <h:message for="name" style="color: red"/>
+                    </div>
+                </p:column>
+                <p:row>
+                    <p:column>
+                        <p:tabView styleClass="custom-tabview">
+                            <p:tab title="Tab 1"><!-- Nội dung của tab 1 -->
+
+                                <ui:insert name="UI">
+                                    <ui:include src="UI.xhtml"/>
+                                </ui:insert>
+
+                            </p:tab>
+                            <p:tab title="Tab 2"><!-- Nội dung của tab 2 -->
+
+                                <ui:insert name="UIPage2">
+                                    <ui:include src="UIPage2.xhtml"/>
+                                </ui:insert>
+
+                            </p:tab>
+
+                            <p:tab title="Tab 3"><!-- Nội dung của tab 3 -->
+                                <ui:insert name="UIPage3">
+                                    <ui:include src="UIPage3.xhtml"/>
+                                </ui:insert>
+                            </p:tab>
+
+                        </p:tabView>
+                    </p:column>
+                </p:row>
+
+                <!--                </p:panelGrid>-->
+
+                <!--                <h:form>-->
+                <!--        </div>-->
+                <!--                <div class="container text-center">-->
+                <!--        <table class="table">-->
 
 
+                <!--                <p:dialog widgetVar="dialogDetail" id="dialogDetail" resizable="false" modal="true"-->
+                <!--                          header="Test open dialog : #{myBean.student.name} , want to open dialog">-->
+                <!--                    <p:panelGrid styleClass="Wid50" style="border: 0px" id="pndlg">-->
+                <!--                        <p:row>-->
+                <!--                            <p:column style="width: 150px">-->
+                <!--                                <h:outputText value="Lý do từ chối"/>-->
+                <!--                            </p:column>-->
+                <!--                            <p:column style="width: 300px">-->
+                <!--                                <p:inputTextarea maxlength="500" value="#{myBean.student.id}"-->
+                <!--                                                 requiredMessage="Trường lý do từ chối không được bỏ trống"-->
+                <!--                                                 id="lastCheckerComment">-->
+                <!--                                </p:inputTextarea>-->
+                <!--                                <p:message for="lastCheckerComment"></p:message>-->
+                <!--                            </p:column>-->
+                <!--                        </p:row>-->
+                <!--                    </p:panelGrid>-->
 
-</h:body>
+                <!--                    <div class="text-center">-->
+                <!--                        <p:commandButton value="Đóng" actionListener="${myBean.closeDialog}"-->
+                <!--                                         process="@this" update=":main:dataTable :main:dialogDetail">-->
+                <!--                        </p:commandButton>-->
+                <!--                    </div>-->
+                <!--                </p:dialog>-->
+                <!--                </h:form>-->
+                <!--                </div>-->
+            </h:form>
+        </div>
+
+    </h:body>
+
+</f:view>
 </html>

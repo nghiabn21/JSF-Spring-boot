@@ -1,0 +1,185 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <ui:composition>
+        <p:panelGrid style="border:0; background-color: transparent" id="pnlSearch">
+            <p:row styleClass="Wid100">
+                <p:column colspan="6" style="font-weight: bold">
+                    Search for employee
+                </p:column>
+            </p:row>
+            <p:row styleClass="Wid100 Pad10">
+                <p:column style="width:10%" styleClass="nowrap">
+                    <h:outputLabel style="width:10%; margin-left: 15px" for="age" value="Age: "/>
+                </p:column>
+                <p:column style="width:25%">
+                    <p:inputText id="age" value="#{myBean.student.age}"
+                                 validatorMessage="User name is required">
+                        <!--                                <f:validateRequired/>-->
+                    </p:inputText>
+                    <div>
+                        <h:message for="age" style="color: red"/>
+                    </div>
+                </p:column>
+                <!--                        <p:column style="width:22%" />-->
+            </p:row>
+            <p:row styleClass="Wid100 Pad10">
+                <p:column style="width:10%" styleClass="nowrap">
+                    <h:outputLabel styleClass="col-form-label col-sm-4" for="address"
+                                   value="Address: "/>
+                </p:column>
+                <p:column style="width:25%">
+                    <p:inputText id="address" value="#{myBean.student.address}"
+                                 validatorMessage="User name is required">
+                        <!--                                <f:validateRequired/>-->
+                    </p:inputText>
+                    <div>
+                        <h:message for="address" style="color: red"/>
+                    </div>
+                </p:column>
+
+                <!--                        <p:column style="width:10%"/>-->
+
+                <p:column style="width:10%" styleClass="nowrap">
+                    <p:outputLabel styleClass="col-form-label col-sm-4" value="Gender: "/>
+                </p:column>
+                <p:column style="width:25%; margin-top:-1px;margin-left:0px">
+                    <p:selectOneRadio styleClass="col-form-label col-sm-4"
+                                      value="#{myBean.student.gender}">
+                        <f:selectItem itemValue="Male" itemLabel="Male"/>
+                        <f:selectItem itemValue="Female" itemLabel="Female"/>
+                    </p:selectOneRadio>
+                </p:column>
+            </p:row>
+            <p:row styleClass="Wid100 Pad10">
+                <p:column style="width:10%" styleClass="nowrap">
+                    <h:outputLabel styleClass="col-form-label col-sm-4" value="Skills: "/>
+                </p:column>
+                <p:column style="width:25%">
+                    <h:selectManyListbox styleClass="col-form-label col-sm-4"
+                                         value="#{myBean.student.skills}">
+                        <f:selectItem itemValue="Java" itemLabel="Java"/>
+                        <f:selectItem itemValue="SQL" itemLabel="SQL"/>
+                        <f:selectItem itemValue="AWS" itemLabel="AWS"/>
+                        <f:selectItem itemValue="C#" itemLabel="C#"/>
+                        <f:selectItem itemValue="Python" itemLabel="Python"/>
+                    </h:selectManyListbox>
+                </p:column>
+
+                <!--                        <p:column style="width:10%"/>-->
+
+                <p:column style="width:10%" styleClass="nowrap">
+                    <h:outputLabel styleClass="col-form-label col-sm-4" value="  Major: "/>
+                </p:column>
+                <p:column style="width:25%">
+                    <h:selectOneMenu styleClass="col-form-label col-sm-4"
+                                     value="#{myBean.student.major}">
+                        <f:selectItem itemValue="Dev" itemLabel="Dev"/>
+                        <f:selectItem itemValue="QA" itemLabel="QA"/>
+                        <f:selectItem itemValue="Tester" itemLabel="Tester"/>
+                        <f:selectItem itemValue="BA" itemLabel="BA"/>
+                    </h:selectOneMenu>
+                </p:column>
+            </p:row>
+            <p:row styleClass="Wid100 Pad10">
+                <p:column style="width:10%" styleClass="nowrap">
+                    <p:outputLabel styleClass="col-form-label col-sm-4" for="fromDate"
+                                   value="Start Date:"/>
+                </p:column>
+                <p:column style="width:25%">
+                    <p:calendar pattern="dd/MM/yyyy"
+                                mask="true" showOn="button" id="fromDate"
+                                value="#{myBean.student.fromDate}"/>
+                </p:column>
+
+                <!--                        <p:column style="width:10%"/>-->
+
+                <p:column style="width:10%" styleClass="nowrap">
+                    <p:outputLabel styleClass="col-form-label col-sm-4" for="toDate"
+                                   value="End Date:"/>
+                </p:column>
+                <p:column style="width:25%">
+                    <p:calendar pattern="dd/MM/yyyy"
+                                mask="true" showOn="button" id="toDate"
+                                value="#{myBean.student.toDate}"/>
+                </p:column>
+            </p:row>
+            <p:row styleClass="Wid100 Pad10">
+                <p:column colspan="5">
+                    <center>
+                        <h:commandButton value="Save" action="#{myBean.saveStudent}"
+                                         class="btn btn-primary"/>
+                    </center>
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+        <p:dataTable
+                id="dataTable" var="student" value="#{myBean.allStudent}"
+                emptyMessage="Không có kết quả nào"
+                rows="5"
+                paginator="true"
+                paginatorPosition="bottom" rowsPerPageTemplate="5,10,15"
+                currentPageReportTemplate=""
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+            <p:column style="wi">
+                <f:facet name="header">Id</f:facet>
+                <h:outputText value="#{student.id}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Name</f:facet>
+                <h:outputText value="#{student.name}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Age</f:facet>
+                <h:outputText value="#{student.age}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Address</f:facet>
+                <h:outputText value="#{student.address}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Gender</f:facet>
+                <h:outputText value="#{student.gender}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Skill</f:facet>
+                <ui:repeat value="#{student.skills}" var="skill">
+                    <h:outputText value="#{skill.value}"/>
+                    ;
+                </ui:repeat>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Major</f:facet>
+                <h:outputText value="#{student.major}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Update</f:facet>
+                <h:form>
+                    <h:commandButton value="Update" class="btn btn-primary"
+                                     action="#{myBean.moveToPage2()}">
+                    </h:commandButton>
+                </h:form>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Delete</f:facet>
+                <h:form>
+                    <h:commandButton value="Delete" class="btn btn-danger">
+                    </h:commandButton>
+                </h:form>
+            </p:column>
+
+        </p:dataTable>
+    </ui:composition>
+</h:body>
+</html>
